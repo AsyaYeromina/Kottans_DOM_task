@@ -36,13 +36,13 @@ function generateHTML() {
     for (let i = 0; i < tabContent.length; i++) {
         const tabItem = tabContent[i];
         const tabName = tabItem["tabName"];
-        buttonList.insertAdjacentHTML("beforeend", `<li><button data-id="${i}" class="tab-button">${tabName}</button></li>`);
-        document.querySelectorAll(".tab-button")[i].addEventListener("click", contentToggle);
+        buttonList.insertAdjacentHTML("beforeend", `<li class="menu__tab-item"><button data-id="${i}" class="menu__tab-button">${tabName}</button></li>`);
+        document.querySelectorAll(".menu__tab-button")[i].addEventListener("click", contentToggle);
     }
 }
 
 function layoutSetup() {
-    document.querySelector(".tab-button").classList.add("tab-button--active");
+    document.querySelector(".menu__tab-button").classList.add("menu__tab-button--active");
     contentWrapper.insertAdjacentHTML("beforeend", tabContent[0]["text"]);
     contentList.insertAdjacentHTML("beforeend", tabContent[0]["audio"]);
 }
@@ -55,10 +55,10 @@ function contentToggle(evt) {
 
     resetContent();
     // todo:
-    // function name(currentBtn, "tab-button--active") {
+    // function name(currentBtn, "menu__tab-button--active") {
     // }
 
-    currentBtn.classList.add("tab-button--active");
+    currentBtn.classList.add("menu__tab-button--active");
     contentWrapper.insertAdjacentHTML("beforeend", currentText);
     contentList.insertAdjacentHTML("beforeend", currentAudio);
 }
@@ -66,5 +66,5 @@ function contentToggle(evt) {
 function resetContent() {
     contentWrapper.innerHTML = "";
     contentList.innerHTML = "";
-    document.getElementsByClassName("tab-button--active")[0].classList.remove("tab-button--active");
+    document.getElementsByClassName("menu__tab-button--active")[0].classList.remove("menu__tab-button--active");
 }
